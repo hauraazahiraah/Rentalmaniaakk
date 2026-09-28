@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String          @id @default(cuid())
+  name      String
+  email     String          @unique
+  password  String
+  phone     String          @unique
+  role      String          @default("USER")
+  saldo     Float           @default(0)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  laporan   LaporanSampah[]
+
+  @@map("users")
+}
+
+model JenisSampah {
+  id        String          @id @default(cuid())
+  name      String          @unique
+  price     Float
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  laporan   LaporanSampah[]
+
+  @@map("jenis_sampah")
+}
+
+model Wilayah {
+  id               String          @id @default(cuid())
+  name             String          @unique
+  kotaAdministrasi String
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  laporan          LaporanSampah[]
+
+  @@map("wilayah")
+}
+
+model LaporanSampah {
+  id             String       @id @default(cuid())
+  userId         String
+  jenisSampahId  String
+  wilayahId      String
+  weight         Float
+  totalPrice     Float
+  status         String       @default("PENDING")
+  tanggalLaporan DateTime     @default(now())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jenisSampah    JenisSampah  @relation(fields: [jenisSampahId], references: [id], onDelete: Restrict)
+  wilayah        Wilayah      @relation(fields: [wilayahId], references: [id], onDelete: Restrict)
+  foto           FotoSampah?
+
+  @@unique([userId, jenisSampahId, wilayahId, tanggalLaporan])
+  @@map("laporan_sampah")
+}
+
+model FotoSampah {
+  id        String        @id @default(cuid())
+  laporanId String        @unique
+  imageUrl  String
+  createdAt DateTime      @default(now())
+  laporan   LaporanSampah @relation(fields: [laporanId], references: [id], onDelete: Cascade)
+
+  @@map("foto_sampah")
+}
