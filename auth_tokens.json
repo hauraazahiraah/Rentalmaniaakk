@@ -1,0 +1,6 @@
+{
+  "adminToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtdWt5angycjAwMDByamtzNXdsZHQ3NDUiLCJlbWFpbCI6ImFkbWluQHNhbXBhaGFoYXl1ay5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3OTA1OTYwNDAsImV4cCI6MTc5MTIwMDg0MH0.3M5nUKKKHp_rV8da83LABKV2PDUXbCDZFUAChFZrWSM",
+  "userToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtdWw2bmYxcTAwMDFyanFjcDdycHY5Y2MiLCJlbWFpbCI6ImJ1ZGlAc2FtcGFoYWhheXVrLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzkwNTk2MDQwLCJleHAiOjE3OTEyMDA4NDB9.8-L59FM-34m4apMcv15GPQBMRxofybGms8NdfK16LFU",
+  "adminEmail": "admin@sampahahayuk.com",
+  "userEmail": "budi@sampahahayuk.com"
+}
